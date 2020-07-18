@@ -1,0 +1,30 @@
+# sudo docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Taobidien2@" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2019-CU3-ubuntu-18.04
+#/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P Taobidien2@
+spring:
+  datasource:
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://localhost;databaseName=EX_WINCC_DATA
+    username: sa
+    password: Taobidien2@
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+  application:
+    name: demo
+server:
+  port: 8080
+
+
+---
+
+spring:
+  profiles: nau_men
+
+---
+
+spring:
+  profiles: chiet
